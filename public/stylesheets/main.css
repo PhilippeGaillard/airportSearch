@@ -1,0 +1,21 @@
+table{
+	border: 1px solid black;
+}
+th{
+     border: 2px solid black;
+}
+td{
+  	border: 1px solid black;
+}
+a.surf{
+    background-color: #97ace9
+}
+button{
+background-color: #109090;
+border: 1;
+color: white;
+padding: 12px 35px;
+text-align: center;
+text-decoration: none;
+font-size: 14px;
+}
