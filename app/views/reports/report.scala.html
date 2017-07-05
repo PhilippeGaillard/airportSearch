@@ -1,0 +1,50 @@
+@(reslist: (Seq[(String, Int, List[String])], List[(String, Int, List[String])], List[(String, Int)]))
+
+@main("Airport App") {
+<h1>Report</h1>
+
+<p>
+    <a href="@routes.HomeController.index">Homepage</a>
+</p>
+
+<h2>Bottom 10 countries with least airports :</h2>
+<table>
+    <thead>
+    <tr><th>Country name</th><th>Number of airports</th><th>Type of runway surfaces</th>
+    </thead>
+    <tbody>
+    @for(airpdata <- reslist._1) {
+    <tr><td>@airpdata._1</td><td>@airpdata._2</td><td>
+        @for(surfaces <- airpdata._3){<a class="surf">@surfaces</a>
+        }</td></tr>
+    }
+    </tbody>
+</table>
+
+<h2>Top 10 countries with most airports :</h2>
+<table>
+    <thead>
+    <tr><th>Country name</th><th>Number of airports</th><th>Type of runway surfaces</th>
+    </thead>
+    <tbody>
+    @for(airpdata <- reslist._2) {
+    <tr><td>@airpdata._1</td><td>@airpdata._2</td><td>
+        @for(surfaces <- airpdata._3){<a class="surf">@surfaces</a>
+        }</td></tr>
+    }
+    </tbody>
+</table>
+
+<h2>Most common runway identifications :</h2>
+<table>
+    <thead>
+    <tr><th>Identification</th><th>Number</th>
+    </thead>
+    <tbody>
+    @for(runwaydata <- reslist._3) {
+    <tr><td>@runwaydata._1</td><td>@runwaydata._2</td></tr>
+    }
+    </tbody>
+</table>
+
+}

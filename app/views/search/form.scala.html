@@ -1,0 +1,53 @@
+@import scala.collection.mutable.ArrayBuffer
+@import src.main.scala.ImportData.AirportsWithRunways
+@(searchForm: Form[CountryName],resultList : ArrayBuffer[String],airportList: Seq[AirportsWithRunways])(implicit messages: play.api.i18n.Messages, request: RequestHeader)
+
+
+@main("Search page") {
+
+
+<h1>Country name or code : </h1>
+
+
+<p>
+  <a href="@routes.HomeController.index">Homepage</a>
+</p>
+
+@helper.form(routes.FormController.searchPost()) {
+  @helper.inputText(searchForm("name"))
+  <button type="submit">Search</button>
+}
+
+
+
+<h1>Previously searched countries</h1>
+
+Latest search is last in list.
+<table>
+  <thead>
+  <tr><th>Country name : </th>
+  </thead>
+  <tbody>
+  @for(w <- resultList) {
+  <tr><td>@w</td></tr>
+  }
+  </tbody>
+</table>
+
+
+<h1>Airport List</h1>
+<table>
+  <thead>
+  <tr><th>Airport Identifier</th><th>Name</th><th>Type</th><th>Runways (Id and surface)</th>
+  </thead>
+  <tbody>
+  @for(airp <- airportList) {
+  <tr><td>@airp.airport.Ident</td><td>@airp.airport.Name</td><td>@airp.airport.Type</td><td>
+    @for(runways <- airp.listRunways.get){<a>@runways.IdRunway  @runways.Surface</a>
+    } </td></tr>
+  }
+  </tbody>
+</table>
+}
+
+
