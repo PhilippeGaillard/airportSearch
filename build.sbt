@@ -19,14 +19,7 @@ libraryDependencies +="org.scalatest" %% "scalatest" % "2.2.6"
 libraryDependencies +="com.nrinaudo" %% "kantan.csv" % "0.1.19"
 libraryDependencies += "com.nrinaudo" %% "kantan.csv-generic" % "0.1.19"
 
-//libraryDependencies += filters
 
 routesGenerator := InjectedRoutesGenerator
 
 
-
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += "PhilippeTest.controllers._"
-
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += "PhilippeTest.binders._"
